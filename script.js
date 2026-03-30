@@ -95,9 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Project card click handler - simple alert for now
+    // Project card click handler
     window.openProject = function(id) {
-        alert(`Project ${id} detail: Proyek ini dibuat untuk tugas sekolah menggunakan HTML/CSS/JS. GitHub: github.com/jubaamitabh/project-${id}`);
+        if (id === 1) {
+            window.open('Project1.html', '_blank');
+        } else {
+            alert(`Project ${id} coming soon!`);
+        }
     };
 
     // Navbar scroll effect
