@@ -681,8 +681,9 @@ body {
 }
 
 /* Comprehensive Responsive Design - Mobile First */
+/* Hamburger only visible on mobile */
 .hamburger {
-  display: flex;
+  display: none;
 }
 
 .brand {
@@ -744,6 +745,10 @@ body {
 @media (max-width: 768px) {
   .nav-container {
     padding: 0.8rem 1.5rem;
+  }
+  
+  .hamburger {
+    display: flex;
   }
   
   .nav-links {
