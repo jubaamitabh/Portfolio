@@ -110,6 +110,18 @@ body {
   box-shadow: 0 8px 25px rgba(192, 132, 252, 0.6);
 }
 
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  color: #c084fc;
+}
+
 /* Main Content */
 .page-section {
   min-height: 100vh;
@@ -642,8 +654,26 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
   .nav-links {
     display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    padding: 1rem 0;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    gap: 1.5rem;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .nav-links.active {
+    display: flex;
   }
 
   .hero-container {
