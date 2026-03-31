@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         retina_detect: true
     });
 
-    // Navigation function
+// Navigation function
     window.navigateTo = function(sectionId) {
         // Hide all sections
         const sections = document.querySelectorAll('.page-section');
@@ -71,8 +71,27 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         event.target.closest('a').classList.add('active');
 
+        // Close mobile menu if open
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+
         // Smooth scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Mobile menu toggle
+    window.toggleMobileMenu = function() {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        
+        // Prevent body scroll when menu open
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
     };
 
     // Scroll animations using IntersectionObserver
