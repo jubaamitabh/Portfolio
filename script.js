@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         retina_detect: true
     });
 
-// Navigation function
+    // Navigation function
     window.navigateTo = function(sectionId) {
         // Hide all sections
         const sections = document.querySelectorAll('.page-section');
@@ -71,41 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         event.target.closest('a').classList.add('active');
 
-        // Close mobile menu if open
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        if (hamburger && navLinks.classList.contains('active')) {
-            toggleMobileMenu();
-        }
-
         // Smooth scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-
-    // Mobile menu toggle
-    window.toggleMobileMenu = function() {
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger?.classList.toggle('active');
-        navLinks?.classList.toggle('active');
-        document.body.style.overflow = navLinks?.classList.contains('active') ? 'hidden' : '';
-    };
-
-    // Hamburger click event (auto-attached)
-    document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.getElementById('hamburger');
-        hamburger?.addEventListener('click', toggleMobileMenu);
-        
-        // Close menu on window resize (if desktop)
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                document.querySelector('.nav-links')?.classList.remove('active');
-                document.getElementById('hamburger')?.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    });
 
     // Scroll animations using IntersectionObserver
     const observerOptions = {
