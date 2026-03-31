@@ -1,3 +1,25 @@
+// Mobile menu toggle function
+window.toggleMobileMenu = function() {
+  const navLinks = document.querySelector('.nav-links');
+  const hamburger = document.querySelector('.hamburger');
+  const overlay = document.querySelector('.nav-overlay');
+  
+  navLinks.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  overlay.classList.toggle('active');
+  
+  // Prevent body scroll when menu open
+  document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+};
+
+// Close menu when clicking nav item
+document.addEventListener('click', function(e) {
+  if (e.target.closest('.nav-item')) {
+    toggleMobileMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
 // Wait for DOM load
 document.addEventListener('DOMContentLoaded', function() {
     // Typed.js initialization - typewriter effect
@@ -60,6 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navigation function
     window.navigateTo = function(sectionId) {
+        // Close mobile menu if open
+        toggleMobileMenu();
+        
         // Hide all sections
         const sections = document.querySelectorAll('.page-section');
         sections.forEach(s => s.style.display = 'none');
