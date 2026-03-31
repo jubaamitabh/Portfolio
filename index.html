@@ -14,6 +14,11 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="brand" onclick="navigateTo('home')">J'a</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#" onclick="navigateTo('home')" class="nav-item active"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#" onclick="navigateTo('about')" class="nav-item"><i class="far fa-user"></i> About</a></li>
@@ -25,6 +30,7 @@
                     </a>
                 </li>
             </ul>
+            <div class="nav-overlay" onclick="toggleMobileMenu()"></div>
         </div>
     </nav>
 
@@ -105,7 +111,7 @@
                 <p class="center" style="color: white; margin-bottom: 40px;">Here are some of my personal projects. Click to see more details.</p>
                 <div class="project-grid">
                     <div class="project-card" onclick="openProject(1)">
-                        <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=E-Commerce" alt="E-Commerce Website">
+                        <img src="Image1 Project.1.png" alt="E-Commerce Website">
                         <div class="project-info">
                             <h3>E-Commerce Website</h3>
                             <p>Modern e-commerce with cart, search & filters. Click to view details!</p>
