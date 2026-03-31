@@ -14,10 +14,8 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="brand" onclick="navigateTo('home')">J'a</a>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
                 <li><a href="#" onclick="navigateTo('home')" class="nav-item active"><i class="fas fa-home"></i> Home</a></li>
@@ -30,7 +28,6 @@
                     </a>
                 </li>
             </ul>
-            <div class="nav-overlay" onclick="toggleMobileMenu()"></div>
         </div>
     </nav>
 

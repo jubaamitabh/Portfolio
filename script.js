@@ -1,25 +1,3 @@
-// Mobile menu toggle function
-window.toggleMobileMenu = function() {
-  const navLinks = document.querySelector('.nav-links');
-  const hamburger = document.querySelector('.hamburger');
-  const overlay = document.querySelector('.nav-overlay');
-  
-  navLinks.classList.toggle('active');
-  hamburger.classList.toggle('active');
-  overlay.classList.toggle('active');
-  
-  // Prevent body scroll when menu open
-  document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-};
-
-// Close menu when clicking nav item
-document.addEventListener('click', function(e) {
-  if (e.target.closest('.nav-item')) {
-    toggleMobileMenu();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-});
-
 // Wait for DOM load
 document.addEventListener('DOMContentLoaded', function() {
     // Typed.js initialization - typewriter effect
@@ -80,11 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
         retina_detect: true
     });
 
+    // Mobile menu toggle
+    window.toggleMenu = function() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    };
+
     // Navigation function
     window.navigateTo = function(sectionId) {
-        // Close mobile menu if open
-        toggleMobileMenu();
-        
         // Hide all sections
         const sections = document.querySelectorAll('.page-section');
         sections.forEach(s => s.style.display = 'none');
@@ -94,7 +75,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update active nav
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-        event.target.closest('a').classList.add('active');
+        if (event && event.target && event.target.closest('a')) {
+            event.target.closest('a').classList.add('active');
+        }
+
+        // Close mobile menu if open
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
 
         // Smooth scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
