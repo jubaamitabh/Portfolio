@@ -58,6 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
         retina_detect: true
     });
 
+    // Mobile menu toggle
+    window.toggleMenu = function() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    };
+
     // Navigation function
     window.navigateTo = function(sectionId) {
         // Hide all sections
@@ -69,7 +75,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update active nav
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-        event.target.closest('a').classList.add('active');
+        if (event && event.target && event.target.closest('a')) {
+            event.target.closest('a').classList.add('active');
+        }
+
+        // Close mobile menu if open
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
 
         // Smooth scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
