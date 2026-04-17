@@ -112,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Project card click handler
     window.openProject = function(id) {
         if (id === 1) {
-            window.open('Project1.html', '_blank');
+            window.location.href = 'Project1.html';
         } else if (id === 2) {
-            window.open('Project2.html', '_blank');
+            window.location.href = 'Project2.html';
         } else {
             alert(`Project ${id} coming soon!`);
         }
